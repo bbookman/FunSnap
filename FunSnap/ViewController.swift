@@ -17,18 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var avatarUIImageView: UIImageView!
     @IBOutlet weak var lblDisplayName: UILabel!
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        prepareLoginView()
-     
-        
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+           prepareLoginView()
     }
 
     @IBAction func didTapLogin(_ sender: UIButton) {
@@ -108,7 +101,7 @@ class ViewController: UIViewController {
             
             if success {
                 DispatchQueue.main.async {
-                    prepareLoginView()
+                    self.prepareLoginView()
                 }
                 
             } else {
@@ -122,6 +115,7 @@ class ViewController: UIViewController {
         btnLogout.isHidden = true
         btnLogin.isHidden = false
         avatarUIImageView.isHidden = true
+        lblDisplayName.isHidden = true
     }
 
     
