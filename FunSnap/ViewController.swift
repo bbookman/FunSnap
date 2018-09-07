@@ -8,13 +8,28 @@
 
 import UIKit
 import SCSDKLoginKit
+import SCSDKBitmojiKit
 
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnLogout: UIButton!
+    @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var avatarUIImageView: UIImageView!
+    @IBOutlet weak var lblDisplayName: UILabel!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+
+        btnLogout.isHidden = true
+        btnLogin.isHidden = false
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     @IBAction func didTapLogin(_ sender: UIButton) {
@@ -25,14 +40,19 @@ class ViewController: UIViewController {
             
             if success {
                 print("Login Successful")
-                self.getUserDetails()
+                self.getDisplayName()
+                self.getAvatar()
+                DispatchQueue.main.async {
+                    self.btnLogin.isHidden = false
+                }
+                
             }
         }
         
     }
     
     
-    func getUserDetails() {
+    func getDisplayName() {
         
         let graphQLQuery = "{me{displayName, bitmoji{avatar}, externalId}}"
         
@@ -44,6 +64,11 @@ class ViewController: UIViewController {
                 let me = data["me"] as?  [String: Any] else { return }
             
             let displayName = me["displayName"] as? String
+            
+            DispatchQueue.main.async {
+                self.lblDisplayName.text = displayName
+                self.lblDisplayName.isHidden = false
+            }
             
             print((String(describing: displayName)))
             
@@ -60,6 +85,35 @@ class ViewController: UIViewController {
     }
     
     
+    func getAvatar(){
+        SCSDKBitmojiClient.fetchAvatarURL { (avatarUrl, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+    
+            DispatchQueue.main.async {
+            
+            
+                if let avatarUrl = avatarUrl {
+                    self.avatarUIImageView.load(from: avatarUrl)
+                    self.avatarUIImageView.isHidden = false
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func didTapLogout(_ sender: UIButton) {
+        SCSDKLoginClient.unlinkAllSessions { (success) in
+            
+            if success {
+                self.view.setNeedsLayout()
+            } else {
+                
+                print("Error on logout")
+            }
+        }
+    }
     
 }
 
