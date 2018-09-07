@@ -13,6 +13,7 @@ import SCSDKBitmojiKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var btnLogout: UIButton!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var avatarUIImageView: UIImageView!
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.btnLogout.isHidden = false
                     self.btnLogin.isHidden = true
+                    self.btnCamera.isHidden = false
                 }
                 
             }
@@ -112,6 +114,7 @@ class ViewController: UIViewController {
     }
     
     func prepareLoginView(){
+        btnCamera.isHidden = true
         btnLogout.isHidden = true
         btnLogin.isHidden = false
         avatarUIImageView.isHidden = true
