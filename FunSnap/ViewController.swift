@@ -21,9 +21,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-
-        btnLogout.isHidden = true
-        btnLogin.isHidden = false
+        prepareLoginView()
+     
         
     }
     
@@ -43,7 +42,8 @@ class ViewController: UIViewController {
                 self.getDisplayName()
                 self.getAvatar()
                 DispatchQueue.main.async {
-                    self.btnLogin.isHidden = false
+                    self.btnLogout.isHidden = false
+                    self.btnLogin.isHidden = true
                 }
                 
             }
@@ -104,16 +104,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapLogout(_ sender: UIButton) {
-        SCSDKLoginClient.unlinkAllSessions { (success) in
+        SCSDKLoginClient.unlinkCurrentSession(completion:  { (success) in
             
             if success {
-                self.view.setNeedsLayout()
+                DispatchQueue.main.async {
+                    prepareLoginView()
+                }
+                
             } else {
                 
                 print("Error on logout")
             }
-        }
+        })
     }
+    
+    func prepareLoginView(){
+        btnLogout.isHidden = true
+        btnLogin.isHidden = false
+        avatarUIImageView.isHidden = true
+    }
+
     
 }
 
