@@ -24,6 +24,14 @@ class CameraViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration)
+    }
+    
 
     @IBAction func didTapBitmoji(_ sender: UIButton) {
         let viewHeight: CGFloat = 300
@@ -59,7 +67,7 @@ class CameraViewController: UIViewController {
         if let camera = sceneView.pointOfView {
             let position = SCNVector3(x: 0, y: 0, z: -0.5)
             let convertedPosition = camera.convertPosition(position, to: nil)
-            let node = createPhotoNode(image, position: convertedPosition)
+            let node = createPhotoNode(image, position: convertedPosition) 
             self.sceneView.scene.rootNode.addChildNode(node)
         }
     }
