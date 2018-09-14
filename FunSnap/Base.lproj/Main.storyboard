@@ -112,9 +112,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZX-lj-0mU" userLabel="Story">
                                         <rect key="frame" x="47" y="0.0" width="328" height="30"/>
-                                        <state key="normal" title="Story"/>
+                                        <state key="normal" title="Creative"/>
                                         <connections>
-                                            <action selector="didTapStory:" destination="ibB-JA-qBj" eventType="touchUpInside" id="I0P-pI-a5e"/>
+                                            <action selector="didTapCreative:" destination="ibB-JA-qBj" eventType="touchUpInside" id="I0P-pI-a5e"/>
                                         </connections>
                                     </button>
                                 </subviews>

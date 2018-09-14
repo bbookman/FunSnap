@@ -13,6 +13,7 @@ import SCSDKCreativeKit
 import SCSDKBitmojiKit
 
 
+
 class CameraViewController: UIViewController {
     
     var bitmojiSelectionView: UIView?
@@ -48,8 +49,25 @@ class CameraViewController: UIViewController {
         
     }
     
-    
-    @IBAction func didTapStory(_ sender: UIButton) {
+    @IBAction func didTapCreative(_ sender: UIButton) {
+        let snapImage = sceneView.snapshot()
+        let photo = SCSDKSnapPhoto(image: snapImage)
+        let photoContent = SCSDKPhotoSnapContent(snapPhoto: photo)
+        
+        let stickerImage = #imageLiteral(resourceName: "smiles")
+        let sticker = SCSDKSnapSticker(stickerImage: stickerImage)
+
+        photoContent.sticker = sticker /* Optional */
+        photoContent.caption = "Snap on Snapchat!" /* Optional */
+        photoContent.attachmentUrl = "https://www.snapchat.com" /* Optional */
+        
+        let api = SCSDKSnapAPI(content: photoContent)
+        api.startSnapping { (error) in
+            if let error = error {
+                print("ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   ", error.localizedDescription)
+            }
+        }
+        
     }
     
     func createPhotoNode(_ image: UIImage, position: SCNVector3) -> SCNNode {
