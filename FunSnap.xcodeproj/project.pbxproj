@@ -14,6 +14,7 @@
 		CE7392612139DBCF00E43AB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7392602139DBCF00E43AB0 /* Assets.xcassets */; };
 		CE7392642139DBCF00E43AB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7392622139DBCF00E43AB0 /* LaunchScreen.storyboard */; };
 		CE8F12092141EDFB0073A942 /* UIImage+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8F12082141EDFB0073A942 /* UIImage+Load.swift */; };
+		CEBD55E12142F1B90052C898 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD55E02142F1B90052C898 /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		CE7392632139DBCF00E43AB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE7392652139DBCF00E43AB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8F12082141EDFB0073A942 /* UIImage+Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Load.swift"; sourceTree = "<group>"; };
+		CEBD55E02142F1B90052C898 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F213E25AC3561593B617DF7D /* Pods_FunSnap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunSnap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				CE7392622139DBCF00E43AB0 /* LaunchScreen.storyboard */,
 				CE7392652139DBCF00E43AB0 /* Info.plist */,
 				CE8F12082141EDFB0073A942 /* UIImage+Load.swift */,
+				CEBD55E02142F1B90052C898 /* CameraViewController.swift */,
 			);
 			path = FunSnap;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8F12092141EDFB0073A942 /* UIImage+Load.swift in Sources */,
+				CEBD55E12142F1B90052C898 /* CameraViewController.swift in Sources */,
 				CE73925C2139DBCE00E43AB0 /* ViewController.swift in Sources */,
 				CE73925A2139DBCE00E43AB0 /* AppDelegate.swift in Sources */,
 			);

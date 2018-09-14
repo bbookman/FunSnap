@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V0M-PV-gLL">
-                                <rect key="frame" x="0.0" y="294" width="375" height="80"/>
+                                <rect key="frame" x="0.0" y="279" width="375" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2cZ-K7-8cD">
                                         <rect key="frame" x="168.5" y="0.0" width="38" height="30"/>
@@ -35,10 +35,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ala-Lo-jKK" userLabel="Camera">
+                                        <rect key="frame" x="0.0" y="80" width="375" height="30"/>
+                                        <state key="normal" title="Camera"/>
+                                        <connections>
+                                            <segue destination="ibB-JA-qBj" kind="show" id="sdn-6C-de7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="ala-Lo-jKK" firstAttribute="leading" secondItem="V0M-PV-gLL" secondAttribute="leading" id="OFl-iw-fqZ"/>
                                     <constraint firstAttribute="trailing" secondItem="J4x-Bs-oaV" secondAttribute="trailing" id="Xof-BE-JJb"/>
                                     <constraint firstItem="J4x-Bs-oaV" firstAttribute="leading" secondItem="V0M-PV-gLL" secondAttribute="leading" id="ZhS-ie-fHx"/>
+                                    <constraint firstItem="ala-Lo-jKK" firstAttribute="top" secondItem="J4x-Bs-oaV" secondAttribute="bottom" id="g91-EU-dNi"/>
+                                    <constraint firstAttribute="trailing" secondItem="ala-Lo-jKK" secondAttribute="trailing" id="jSb-EN-NhV"/>
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VuI-41-sv1">
@@ -73,6 +83,7 @@
                     </view>
                     <connections>
                         <outlet property="avatarUIImageView" destination="VuI-41-sv1" id="QZI-Sn-ClA"/>
+                        <outlet property="btnCamera" destination="ala-Lo-jKK" id="KW7-ja-t4y"/>
                         <outlet property="btnLogin" destination="2cZ-K7-8cD" id="dOQ-bS-m8G"/>
                         <outlet property="btnLogout" destination="a9l-1B-xQT" id="lTv-pm-y0u"/>
                         <outlet property="lblDisplayName" destination="J4x-Bs-oaV" id="wVj-pP-zI2"/>
@@ -80,6 +91,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Camera-->
+        <scene sceneID="tQY-OC-7nS">
+            <objects>
+                <viewController id="ibB-JA-qBj" userLabel="Camera" customClass="CameraViewController" customModule="FunSnap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HN7-nq-sF2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZT4-bj-uXT">
+                                <rect key="frame" x="0.0" y="627" width="375" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grs-Qg-hS7" userLabel="Bitmoji">
+                                        <rect key="frame" x="0.0" y="0.0" width="47" height="30"/>
+                                        <state key="normal" title="Bitmoji"/>
+                                        <connections>
+                                            <action selector="didTapBitmoji:" destination="ibB-JA-qBj" eventType="touchUpInside" id="Ek4-BK-csa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZX-lj-0mU" userLabel="Story">
+                                        <rect key="frame" x="47" y="0.0" width="328" height="30"/>
+                                        <state key="normal" title="Story"/>
+                                        <connections>
+                                            <action selector="didTapStory:" destination="ibB-JA-qBj" eventType="touchUpInside" id="I0P-pI-a5e"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-kD-Bl1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="607"/>
+                            </arscnView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZT4-bj-uXT" firstAttribute="top" secondItem="qDG-kD-Bl1" secondAttribute="bottom" id="2CV-bt-bA2"/>
+                            <constraint firstItem="qDG-kD-Bl1" firstAttribute="top" secondItem="cp4-1y-JAt" secondAttribute="top" id="LL2-ht-NUA"/>
+                            <constraint firstItem="cp4-1y-JAt" firstAttribute="trailing" secondItem="qDG-kD-Bl1" secondAttribute="trailing" id="SIE-bO-h63"/>
+                            <constraint firstItem="cp4-1y-JAt" firstAttribute="bottom" secondItem="ZT4-bj-uXT" secondAttribute="bottom" constant="10" id="VJV-0j-sYh"/>
+                            <constraint firstItem="qDG-kD-Bl1" firstAttribute="leading" secondItem="cp4-1y-JAt" secondAttribute="leading" id="cYH-44-vQ3"/>
+                            <constraint firstItem="cp4-1y-JAt" firstAttribute="trailing" secondItem="ZT4-bj-uXT" secondAttribute="trailing" id="qgH-0z-x0Y"/>
+                            <constraint firstItem="ZT4-bj-uXT" firstAttribute="leading" secondItem="cp4-1y-JAt" secondAttribute="leading" id="xih-2v-5O0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cp4-1y-JAt"/>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="qDG-kD-Bl1" id="ajI-C8-13Z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eRy-cI-Ovi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="46"/>
         </scene>
     </scenes>
 </document>
