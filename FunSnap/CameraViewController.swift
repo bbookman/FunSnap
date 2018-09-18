@@ -23,7 +23,9 @@ class CameraViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        sceneView.scene = scene
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +66,7 @@ class CameraViewController: UIViewController {
         let api = SCSDKSnapAPI(content: photoContent)
         api.startSnapping { (error) in
             if let error = error {
-                print("ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   ", error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
         
